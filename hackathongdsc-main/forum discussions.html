@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum Discussions - Nyaya AI</title>
+    <link rel="stylesheet" href="forum.css">
+</head>
+<body>
+
+    <header>
+        <h1>Nyaya AI Forum Discussions</h1>
+        <p>Engage with the community, ask questions, and discuss legal matters.</p>
+    </header>
+
+    <main>
+        <section class="forum-container">
+            <h2>Latest Discussions</h2>
+
+            <div class="discussion">
+                <h3>How to file an RTI (Right to Information)?</h3>
+                <p class="meta">Posted by <strong>User123</strong> | 2 hours ago</p>
+                <p class="content">Can someone guide me on the process of filing an RTI in India? What are the necessary documents required?</p>
+                <a href="discussion1.html" class="btn">View Discussion</a>
+            </div>
+
+            <div class="discussion">
+                <h3>Legal rights of tenants in India</h3>
+                <p class="meta">Posted by <strong>LegalGuru</strong> | 5 hours ago</p>
+                <p class="content">What are the key legal protections available to tenants under Indian law? How can tenants prevent unlawful eviction?</p>
+                <a href="discussion2.html" class="btn">View Discussion</a>
+            </div>
+
+            <div class="discussion">
+                <h3>Cybercrime and online fraud legal actions</h3>
+                <p class="meta">Posted by <strong>CyberLawyer</strong> | 1 day ago</p>
+                <p class="content">What legal actions can be taken if someone is a victim of online fraud? Are there any specific cyber laws in India?</p>
+                <a href="discussion3.html" class="btn">View Discussion</a>
+            </div>
+        </section>
+
+        <section class="new-post">
+            <h2>Start a New Discussion</h2>
+            <form id="new-discussion-form">
+                <label for="title">Discussion Title:</label>
+                <input type="text" id="title" placeholder="Enter discussion topic" required>
+
+                <label for="content">Discussion Content:</label>
+                <textarea id="content" placeholder="Write your question or discussion details here..." required></textarea>
+
+                <button type="submit" class="btn">Post Discussion</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById("new-discussion-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Discussion posted successfully! (Functionality to be implemented)");
+        });
+    </script>
+
+</body>
+</html>
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a0f2c; /* Dark Navy Blue */
+    color: #ffd700; /* Gold */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #091d42;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(255, 215, 0, 0.3);
+}
+
+h1, h2 {
+    color: #ffd700;
+}
+
+.forum-container {
+    padding: 30px;
+    width: 80%;
+    margin: auto;
+}
+
+.discussion {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid #ffd700;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px auto;
+    text-align: left;
+    box-shadow: 0px 4px 10px rgba(255, 215, 0, 0.2);
+    transition: 0.3s;
+}
+
+.discussion:hover {
+    background: rgba(255, 215, 0, 0.2);
+}
+
+.meta {
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.content {
+    color: #fff;
+}
+
+.btn {
+    display: inline-block;
+    background: linear-gradient(90deg, #ffd700, #ffb800);
+    color: #0a0f2c;
+    font-weight: bold;
+    border: none;
+    padding: 12px;
+    width: 150px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    margin-top: 10px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #ffb800, #ff9500);
+}
+
+.new-post {
+    background-color: #091d42;
+    padding: 20px;
+    margin-top: 20px;
+    border-top: 2px solid #ffd700;
+}
+
+form {
+    max-width: 500px;
+    margin: auto;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    color: white;
+    font-size: 1em;
+}
+
+textarea {
+    height: 100px;
+}
+
+button {
+    width: 100%;
+    margin-top: 15px;
+}

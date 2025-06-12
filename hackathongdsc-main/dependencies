@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+speechrecognition
+deep_translator
+gtts
+pygame
+neo4j
+python-dotenv

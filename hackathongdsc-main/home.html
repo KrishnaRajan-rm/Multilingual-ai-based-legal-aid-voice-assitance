@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyaya AI - Home</title>
+    <link rel="stylesheet" href="stylessss.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Nyaya AI</h1>
+        <p>Your AI-powered legal assistant</p>
+        <div class="header-buttons">
+            <a href="login.html"><button>Login</button></a>
+            <a href="signup.html"><button>Sign Up</button></a>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>About Nyaya AI</h2>
+            <p>Nyaya AI is dedicated to providing accessible legal guidance using AI-powered technology.</p>
+        </section>
+
+        <!-- Buttons for Navigation -->
+        <a href="subscriptions.html">
+            <button>Go to Subscriptions</button>
+        </a>
+
+        <a href="help&support.html">
+            <button>Help & Support</button>
+        </a>
+
+        <a href="lawyers.html">
+            <button>Pro Bono Lawyers</button>
+        </a>
+
+        <a href="chatbot.html">
+            <button>Legal Chatbot</button>
+        </a>
+
+        <a href="forum.html"> 
+            <button>Forum Discussions</button>
+        </a>
+    </main>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbot">
+        <div class="chat-header">
+            <h2>Nyaya AI Chatbot</h2>
+            <button id="close-chatbot">×</button>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <p class="bot-message">Hello! How can I assist you with legal queries today?</p>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="user-input" placeholder="Type your query...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <section class="info-section">
+        <h2>Our Mission</h2>
+        <p>At Nyaya AI, we believe that legal knowledge should be a fundamental right, not a privilege. Our mission is to make legal assistance accessible, understandable, and available in multiple languages, ensuring justice for all. Through AI-powered legal guidance, we simplify complex legal concepts and provide instant support to individuals, businesses, and communities. Our multilingual chatbot, voice-enabled assistance, and pro bono lawyer network bridge the gap between people and legal help. Whether it’s resolving disputes, understanding rights, or accessing legal resources, Nyaya AI empowers users with the knowledge they need. We are committed to making justice inclusive, transparent, and easily attainable for everyone.</p>
+    </section>
+
+    <section class="info-section">
+        <h2>Our Vision</h2>
+        <p>We strive to revolutionize legal accessibility by offering an AI-driven platform that simplifies legal concepts and makes justice available to all. Nyaya AI ensures that legal assistance is not a luxury but a fundamental right for every individual, irrespective of their financial or social background. Through advanced AI technology, multilingual support, and expert-driven insights, we dismantle barriers to legal knowledge, making legal processes transparent and easy to understand. Our vision is to create a world where everyone can confidently navigate the legal system with clarity and empowerment, fostering a society that upholds fairness, justice, and equal opportunities for all.</p>
+    </section>
+
+    <script src="chatbot.js"></script>
+</body>
+</html>
+
+CSS
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0B2948; /* Dark Royal Blue */
+    color: #DBC464; /* Elegant Gold */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background: linear-gradient(90deg, #081c36, #0B2948);
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(219, 196, 100, 0.3);
+}
+
+h1, h2 {
+    font-weight: bold;
+    color: #DBC464; /* Gold */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    background: #0B2948;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    box-shadow: 0px 2px 8px rgba(219, 196, 100, 0.2);
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #DBC464;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: white;
+    text-shadow: 0px 0px 10px #DBC464;
+}
+
+/* Button Styling */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+button {
+    background: linear-gradient(90deg, #DBC464, #bfa353);
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 12px 20px;
+    margin: 10px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.4s;
+    box-shadow: 0px 4px 10px rgba(219, 196, 100, 0.5);
+}
+
+button:hover {
+    background: white;
+    color: black;
+    box-shadow: 0px 0px 15px #DBC464;
+}
+
+/* Chatbot */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    background: #081c36;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(219, 196, 100, 0.3);
+}
+
+.chat-header {
+    background: #DBC464;
+    padding: 10px;
+    border-radius: 15px 15px 0 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.chat-body {
+    padding: 15px;
+    color: white;
+}
+
+.chat-footer {
+    padding: 10px;
+    background: #0B2948;
+    border-radius: 0 0 15px 15px;
+}
+
+.chat-footer input {
+    width: 75%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+.chat-footer button {
+    background: #DBC464;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-footer button:hover {
+    background: #bfa353;
+}
+
+/* Sections */
+.info-section {
+    background: rgba(219, 196, 100, 0.1);
+    border-left: 5px solid #DBC464;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(219, 196, 100, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .chatbot-container {
+        width: 90%;
+        right: 5%;
+    }
+}
+

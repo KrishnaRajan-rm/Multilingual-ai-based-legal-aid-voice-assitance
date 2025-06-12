@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Legal Chatbot - Nyaya AI</title>
+    <link rel="stylesheet" href="bot.css" />
+</head>
+<body>
+    <main>
+        <section class="chatbot-container">
+            <div class="chat-header">
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ta">Tamil</option>
+                    <option value="te">Telugu</option>
+                    <option value="kn">Kannada</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="mr">Marathi</option>
+                    <option value="bn">Bengali</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="pa">Punjabi</option>
+                    <option value="or">Odia</option>
+                    <option value="as">Assamese</option>
+                    <option value="ur">Urdu</option>
+                    <option value="kok">Konkani</option>
+                    <option value="ma">Manipuri</option>
+                    <option value="ne">Nepali</option>
+                    <option value="sd">Sindhi</option>
+                    <option value="ks">Kashmiri</option>
+                    <option value="doi">Dogri</option>
+                    <option value="skt">Sanskrit</option>
+                </select>
+                <h2>Nyaya AI Chatbot</h2>
+            </div>
+            <div class="chat-content">
+                <div class="chat-body" id="chat-body">
+                    <p class="bot-message">Hello! How can I assist you with legal queries today?</p>
+                </div>
+                <div class="chat-footer">
+                    <input type="text" id="user-input" placeholder="Type your legal query..." />
+                    <button id="mic-button">🎤</button>
+                    <label for="pdf-upload" class="pdf-icon">📄</label>
+                    <input type="file" id="pdf-upload" accept="application/pdf" style="display: none;" />
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const BASE_URL = 'http://localhost:8080'; // Update if using a different port
+
+        // Voice Recognition and Transcription
+        document.getElementById("mic-button").addEventListener("click", async () => {
+            if (!(window.SpeechRecognition || window.webkitSpeechRecognition)) {
+                displayMessage("bot", "Sorry, your browser does not support speech recognition.");
+                return;
+            }
+
+            try {
+                const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                recognition.lang = document.getElementById("language-select").value;
+
+                recognition.onresult = async (event) => {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById("user-input").value = transcript;
+
+                    // Display user message
+                    displayMessage("user", transcript);
+
+                    // Send transcription to backend for processing
+                    try {
+                        const response = await fetch(`${BASE_URL}/ask_legal/`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ question: transcript })
+                        });
+
+                        const result = await response.json();
+                        displayMessage("bot", result.response);
+                    } catch (error) {
+                        console.error("Error:", error);
+                        displayMessage("bot", "Sorry, something went wrong.");
+                    }
+                };
+
+                recognition.onerror = (event) => {
+                    console.error("Speech recognition error:", event.error);
+                    switch (event.error) {
+                        case "not-allowed":
+                        case "permission-denied":
+                            displayMessage("bot", "Please allow microphone access to use this feature.");
+                            break;
+                        case "no-speech":
+                            displayMessage("bot", "No speech detected. Please try again.");
+                            break;
+                        case "audio-capture":
+                            displayMessage("bot", "No microphone found. Please check your microphone.");
+                            break;
+                        default:
+                            displayMessage("bot", "Sorry, there was an error with speech recognition.");
+                    }
+                };
+
+                recognition.onstart = () => {
+                    console.log("Microphone access granted. Listening...");
+                };
+
+                recognition.onend = () => {
+                    console.log("Speech recognition ended.");
+                };
+
+                recognition.start();
+            } catch (error) {
+                console.error("Error initializing speech recognition:", error);
+                displayMessage("bot", "Sorry, there was an error accessing the microphone.");
+            }
+        });
+
+        // Handle PDF Upload
+        document.getElementById("pdf-upload").addEventListener("change", async (event) => {
+            const file = event.target.files[0];
+            if (file && file.type === "application/pdf") {
+                const formData = new FormData();
+                formData.append('file', file);
+
+                try {
+                    const response = await fetch(`${BASE_URL}/transcribe/`, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+                    displayMessage("bot", result.transcription);
+                } catch (error) {
+                    console.error("Error:", error);
+                    displayMessage("bot", "Sorry, something went wrong.");
+                }
+            } else {
+                alert("Please upload a valid PDF file.");
+            }
+        });
+
+        // Handle Sending Message
+        async function sendMessage() {
+            const userInput = document.getElementById("user-input").value;
+            if (!userInput.trim()) return;
+
+            // Display user message
+            displayMessage("user", userInput);
+
+            try {
+                // Send message to backend for processing
+                const response = await fetch(`${BASE_URL}/ask_legal/`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: userInput })
+                });
+
+                const result = await response.json();
+                displayMessage("bot", result.response);
+            } catch (error) {
+                console.error("Error:", error);
+                displayMessage("bot", "Sorry, something went wrong.");
+            }
+
+            // Clear input after sending
+            document.getElementById("user-input").value = "";
+        }
+
+        // Display Messages in Chat
+        function displayMessage(sender, message) {
+            const chatBody = document.getElementById("chat-body");
+            const messageElement = document.createElement("p");
+            messageElement.className = sender === "user" ? "user-message" : "bot-message";
+            messageElement.textContent = message;
+            chatBody.appendChild(messageElement);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+    </script>
+</body>
+</html>

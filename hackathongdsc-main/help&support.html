@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support - Nyaya AI</title>
+    <link rel="stylesheet" href="help.css">
+    <script>
+        function toggleFAQ(id) {
+            var faq = document.getElementById(id);
+            faq.classList.toggle("active");
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Help & Support</h1>
+        <p>Need assistance? We’re here to help!</p>
+    </header>
+
+    <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <button onclick="toggleFAQ('faq1')">How does Nyaya AI provide legal assistance?</button>
+            <p id="faq1" class="faq-answer">Nyaya AI uses AI-powered legal insights to help users understand legal concepts, answer queries, and guide them to the right resources.</p>
+        </div>
+
+        <div class="faq-item">
+            <button onclick="toggleFAQ('faq2')">Can Nyaya AI provide legal advice?</button>
+            <p id="faq2" class="faq-answer">No, Nyaya AI provides informational guidance only. For legal consultation, we help connect users with verified legal professionals.</p>
+        </div>
+
+        <div class="faq-item">
+            <button onclick="toggleFAQ('faq3')">Is Nyaya AI available in multiple languages?</button>
+            <p id="faq3" class="faq-answer">Yes! We support multiple regional languages and dialects, making legal assistance accessible to all.</p>
+        </div>
+
+        <div class="faq-item">
+            <button onclick="toggleFAQ('faq4')">How can I connect with a pro bono lawyer?</button>
+            <p id="faq4" class="faq-answer">You can use the "Pro Bono Lawyer Connect" feature to find legal professionals offering free legal aid.</p>
+        </div>
+
+        <div class="faq-item">
+            <button onclick="toggleFAQ('faq5')">What should I do if I face technical issues?</button>
+            <p id="faq5" class="faq-answer">Try clearing your cache, updating your browser, or restarting the application. If issues persist, contact our support team.</p>
+        </div>
+    </section>
+
+    <section class="contact">
+        <h2>Contact Support</h2>
+        <p>Email: <a href="mailto:support@nyayaai.com">support@nyayaai.com</a></p>
+        <p>Phone: +91 XXXXXXXXXX</p>
+        <p>Live Chat: Available from 9 AM - 9 PM IST</p>
+    </section>
+
+    <section class="community">
+        <h2>Community Support & Legal Forums</h2>
+        <p>Join our <a href="#">Legal Forum</a> to discuss legal queries with experts and stay updated on legal rights.</p>
+    </section>
+</body>
+</html>
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a0f2c; /* Dark Navy Blue */
+    color: #ffd700; /* Gold */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #091d42;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(255, 215, 0, 0.3);
+}
+
+h1, h2 {
+    color: #ffd700;
+}
+
+button {
+    background: linear-gradient(90deg, #ffd700, #ffb800);
+    color: #0a0f2c;
+    font-weight: bold;
+    border: none;
+    padding: 12px;
+    width: 80%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #ffb800, #ff9500);
+}
+
+.faq {
+    padding: 30px;
+}
+
+.faq-item {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid #ffd700;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px auto;
+    width: 80%;
+    text-align: left;
+    box-shadow: 0px 4px 10px rgba(255, 215, 0, 0.2);
+    transition: 0.3s;
+}
+
+.faq-item:hover {
+    background: rgba(255, 215, 0, 0.2);
+}
+
+.faq-answer {
+    display: none;
+    padding: 10px;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+}
+
+.faq-answer.active {
+    display: block;
+}
+
+.contact, .community {
+    padding: 20px;
+    background-color: #091d42;
+    margin-top: 20px;
+    border-top: 2px solid #ffd700;
+}
+
+a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+}

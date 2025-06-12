@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe to Nyaya AI</title>
+    <link rel="stylesheet" href="subscription.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Choose Your Plan</h1>
+        <p>Get access to premium legal assistance anytime, anywhere.</p>
+    </header>
+
+    <section class="pricing-container">
+        <div class="plan-card basic">
+            <h3>🕒 1 Month</h3>
+            <p class="price">₹150</p>
+            <p class="discount">No Discount</p>
+            <button onclick="payNow(150, '1 Month')">Subscribe Now</button>
+        </div>
+
+        <div class="plan-card standard">
+            <h3>📅 3 Months</h3>
+            <p class="price">₹428 <span class="old-price">₹450</span></p>
+            <p class="discount">5% Off</p>
+            <button onclick="payNow(428, '3 Months')">Subscribe Now</button>
+        </div>
+
+        <div class="plan-card premium">
+            <h3>🛡️ 6 Months</h3>
+            <p class="price">₹810 <span class="old-price">₹900</span></p>
+            <p class="discount">10% Off</p>
+            <button onclick="payNow(810, '6 Months')">Subscribe Now</button>
+        </div>
+
+        <div class="plan-card elite">
+            <h3>🏆 9 Months</h3>
+            <p class="price">₹1148 <span class="old-price">₹1350</span></p>
+            <p class="discount">15% Off</p>
+            <button onclick="payNow(1148, '9 Months')">Subscribe Now</button>
+        </div>
+
+        <div class="plan-card vip">
+            <h3>🌟 12 Months</h3>
+            <p class="price">₹1440 <span class="old-price">₹1800</span></p>
+            <p class="discount">20% Off</p>
+            <button onclick="payNow(1440, '12 Months')">Subscribe Now</button>
+        </div>
+    </section>
+
+    <script>
+        function payNow(amount, plan) {
+            var options = {
+                "key": "RAZORPAY_KEY_ID", // Replace with your Razorpay Key ID
+                "amount": amount * 100, 
+                "currency": "INR",
+                "name": "Nyaya AI",
+                "description": "Subscription Plan - " + plan,
+                "image": "https://yourwebsite.com/logo.png", 
+                "handler": function (response) {
+                    alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+                },
+                "theme": {
+                    "color": "#DBC464"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        }
+    </script>
+
+</body>
+</html>
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: #0B2948;
+    color: white;
+}
+
+/* Header */
+header {
+    background: rgba(219, 196, 100, 0.2);
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #DBC464;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+/* Pricing Section */
+.pricing-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 40px 20px;
+}
+
+/* Plan Cards */
+.plan-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    cursor: pointer;
+    border: 2px solid #DBC464;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(219, 196, 100, 0.5);
+}
+
+/* Pricing */
+.price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #DBC464;
+}
+
+.old-price {
+    font-size: 1rem;
+    text-decoration: line-through;
+    color: #ffdddd;
+}
+
+/* Discount */
+.discount {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #f8f9fa;
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(135deg, #DBC464, #C4A24D);
+    color: #0B2948;
+    border: none;
+    padding: 12px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 10px;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #C4A24D, #DBC464);
+    transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
