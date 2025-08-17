@@ -6,3 +6,9 @@ gtts
 pygame
 neo4j
 python-dotenv
+streamlit
+torch
+numpy
+Pillow
+requests
+pydantic
